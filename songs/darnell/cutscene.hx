@@ -11,6 +11,8 @@ var cutsceneCam:FlxCamera = new FlxCamera(0, 0, 0, 0);
 
 var music:FlxSound;
 
+var game = PlayState;
+
 function create() {
     game.persistentDraw = false;
 	openSubState(new VideoCutscene(Paths.file('songs/' + game.SONG.meta.name + '/cutscene.' + Flags.VIDEO_EXT), function(){
@@ -21,6 +23,8 @@ function create() {
 }
 
 function startInGameCut(){
+    game = PlayState.instance;
+    game.persistentUpdate = true;
     var darnellCamPos = game.dad.getCameraPosition();
     var picoCamPos = game.boyfriend.getCameraPosition();
     var neneCamPos = game.gf.getCameraPosition();
